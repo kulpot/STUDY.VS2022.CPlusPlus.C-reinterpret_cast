@@ -15,5 +15,7 @@ struct Cow
 
 int main()
 {
-
+	Cow cow;
+	cow.mooCount = 8; cow.legCount = 5;
+	cow.gender = 'f'; cow.isButchered = true;
 }
