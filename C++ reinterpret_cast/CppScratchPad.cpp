@@ -5,3 +5,15 @@ using std::cout;
 // --------------------------- C++ reinterpret_cast -----------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=wcKXGvi1JRk&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=2&t=7s
 
+struct Cow
+{
+	int mooCount;
+	int legCount;
+	char gender;
+	bool isButchered;
+};
+
+int main()
+{
+
+}
