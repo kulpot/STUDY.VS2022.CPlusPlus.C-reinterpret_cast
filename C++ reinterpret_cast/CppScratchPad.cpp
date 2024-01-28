@@ -20,6 +20,9 @@ int main()
 	Cow cow;		// cow contains 2x int, char, bool, packing
 	cow.mooCount = 8; cow.legCount = 5;
 	cow.gender = 'f'; cow.isButchered = true;
-	Cow* cowPtr = &cow;		//cow pointer 
-	cout << cowPtr->gender;		// -> dereference
+	Cow* cowPtr = &cow;		//cow pointer - address
+	//cout << cowPtr->gender;		// -> dereference
+	int* intPtr = reinterpret_cast<int*>(cowPtr);		// reinterpret_cast
+	cout << cowPtr << endl;
+	cout << intPtr << endl;
 }
