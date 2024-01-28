@@ -5,7 +5,7 @@ using std::endl;
 // --------------------------- C++ reinterpret_cast -----------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=wcKXGvi1JRk&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=2&t=7s
 
-
+//reinterpret casting - does not change the address while changing the value type of a RAM in compile time
 
 struct Cow		//struct defaults to public
 {
@@ -23,6 +23,24 @@ int main()
 	Cow* cowPtr = &cow;		//cow pointer - address
 	//cout << cowPtr->gender;		// -> dereference
 	int* intPtr = reinterpret_cast<int*>(cowPtr);		// reinterpret_cast
-	cout << cowPtr << endl;
-	cout << intPtr << endl;
+	//cout << cowPtr << endl; cout << intPtr << endl;		// Result:same address as intPtr cause of reinterpret_casting
+	//cout << intPtr << endl;	//Result: 8 <- the first value of struct Cow
+	//############################
+	//intPtr++;		//PointerArithmetic-SameAs: intPtr = intPtr + 1;
+	//intPtr = intPtr + 1;	
+	//cout << intPtr << endl;		//result: address + int size value
+	//############################
+	//cout << *intPtr << endl;	//points to mooCount value
+	//intPtr++;
+	//cout << *intPtr << endl;	// *intPtr points to legCount cause of intPtr++
+	//############################
+	intPtr += 2;
+	cout << *intPtr << endl;	// points to gender(int value)
+	cout << *reinterpret_cast<char*>(intPtr) << endl;	// points to gender(char value) and the value char is not save to char point value
+	char* charPtr = reinterpret_cast<char*>(intPtr);
+	//cout << *charPtr << endl;	// stored in charPtr value
+	charPtr++;
+	cout << *charPtr << endl;	// charPtr points to isButchered(charr value)
+	cout << *reinterpret_cast<bool*>(charPtr) << endl;	// charPtr points to isButchered(bool value)
+	cout << true << endl; // prove bool result of isButchered bool value
 }
